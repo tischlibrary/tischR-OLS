@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linear Regression with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Linear Regression with R">
+  <meta name="author" content="Josh Quan - joshua.quan@tufts.edu">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Linear Regression with R</h1>
+    <h2>Fall 2016</h2>
+    <p>Josh Quan - joshua.quan@tufts.edu<br/>Tisch Library</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#ffffff;">
+  <hgroup>
+    <h2>Goals for the Hour</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>(brief) Introduction to the R Studio Interface</p></li>
+<li><p>Linear (OLS) Regression </p>
+
+<ul>
+<li>Assumptions</li>
+<li>Continuous Variables</li>
+<li>Categorical Variables</li>
+<li>Multiple Variables</li>
+</ul></li>
+<li><p>Library and Online Resources</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Preliminaries</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>tinyurl.com/tischR-OLS</p></li>
+<li><p>Open RStudio:  Windows -&gt; Data &amp; Statistical Applications -&gt; RStudio</p></li>
+<li><p>In RStudio: Session - &gt; Set Working Directory - &gt; Choose Directory... </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The RStudio Interface</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Console</li>
+<li>Source/Editor</li>
+<li>Environment</li>
+<li>Files,Plots, Packages, Help, Viewer</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Tidy Data = Happy Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="tidy.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <article data-timings="">
+    <p><img src="heights.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <article data-timings="">
+    <p><img src="crime_1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <article data-timings="">
+    <p><img src="line.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <article data-timings="">
+    <p><img src="line1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="https://gallery.shinyapps.io/simple_regression/"></iframe> 
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="interpret.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="lmsyntax.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="formulas.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="response.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>mod &lt;- lm(tc2009 ~ low, data = crime)
+mod
+</code></pre>
+
+<p><img src="modcall.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="extract.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="interpret.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>coef(mod)
+</code></pre>
+
+<p><img src="interpret1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>coef(mod)
+</code></pre>
+
+<p><img src="interpret2.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(mod)
+</code></pre>
+
+<p><img src="crime.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(mod)
+</code></pre>
+
+<p><img src="crime1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:#c7d8ed;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>How does height influence earnings? Fit a linear model to the heights data set, with &#39;earn&#39; as the dependent variable and &#39;height&#39; as the independent variable.</p>
+
+<p>Describe to your neighbor the relationship between height and earnings. Do they interpret is similarly?</p>
+
+<pre><code>heights &lt;- read.csv(&quot;data/heights.csv&quot;)
+summary(heights)
+</code></pre>
+
+<p><img src="summaryheights.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>mod &lt;- lm(earn ~ height, data = heights)
+</code></pre>
+
+<p><img src="output1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>library(ggplot2)
+qplot(height, earn, data = heights) +
+geom_smooth(se = FALSE, method = lm)
+</code></pre>
+
+<p><img src="qplot1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="summary.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(mod)
+</code></pre>
+
+<p><img src="summaryhmod.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Heights Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(mod)
+</code></pre>
+
+<p><img src="summaryhmod1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:#c7d8ed;">
+  <hgroup>
+    <h2>Assumptions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linearity: The relationship between X and the mean of Y is linear.</li>
+<li>Homoscedasticity: The variance of residual is the same for any value of X.</li>
+<li>Independence: Observations are independent of each other.</li>
+<li>Normality: For any fixed value of X, Y is normally distributed.</li>
+</ul>
+
+<p>more on assumptions: <a href="http://data.library.virginia.edu/diagnostic-plots/">http://data.library.virginia.edu/diagnostic-plots/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Assumptions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linearity: The relationship between X and the mean of Y is linear.</li>
+</ul>
+
+<pre><code>library(ggplot2)
+qplot(height, earn, data = heights)
+</code></pre>
+
+<p><img src="assumption1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Assumptions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Homoscedasticity: The variance of residual is the same for any value of X.</li>
+<li>Independence: Observations are independent of each other.</li>
+<li>Normality: For any fixed value of X, Y is normally distributed.</li>
+</ul>
+
+<pre><code>plot(mod)
+</code></pre>
+
+<p><img src="plotmod.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:#c7d8ed;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Fit a linear model to the heights data set.
+This time regress earn on race. How do
+you interpret the results?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>rmod &lt;- lm(earn ~ race, data = heights)
+coef(rmod)
+</code></pre>
+
+<p><img src="race.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:#c7d8ed;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>One value of the variable is chosen as a baseline.
+Each remaining value gets its own coefficient.
+Interpret coefficients as the effect of moving from
+the baseline value to the new value.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>coef(rmod)
+</code></pre>
+
+<p><img src="compare.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(rmod)
+</code></pre>
+
+<p><img src="rmod.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Regression with Categorical Variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(rmod)
+</code></pre>
+
+<p><img src="rmod1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Regression with Multiple Variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>amod &lt;- lm(earn ~ height + sex + age + race + ed, data = heights)
+amod &lt;- lm(earn ~ ., data = heights)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Regression with Multiple Variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>summary(amod)
+</code></pre>
+
+<p><img src="all.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="http://researchguides.library.tufts.edu/data">http://researchguides.library.tufts.edu/data</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:#c7d8ed;">
+  <hgroup>
+    <h2>thank you</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="mailto:joshua.quan@tufts.edu">joshua.quan@tufts.edu</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Goals for the Hour'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Preliminaries'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The RStudio Interface'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Tidy Data = Happy Data'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='NA'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Linear Regression'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Linear Regression'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Linear Regression'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Linear Regression'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Linear Regression'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Linear Regression'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Linear Regression'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Linear Regression'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Linear Regression'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Linear Regression'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Linear Regression'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Linear Regression'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Heights Dataset'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Heights Dataset'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Heights Dataset'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Heights Dataset'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Heights Dataset'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Heights Dataset'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Assumptions'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Assumptions'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Assumptions'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Regression with Categorical Variable'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Regression with Categorical Variable'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Regression with Categorical Variable'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Regression with Categorical Variable'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Regression with Categorical Variable'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Regression with Categorical Variable'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Regression with Multiple Variables'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Regression with Multiple Variables'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Resources'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='thank you'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='NA'>
+         40
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
