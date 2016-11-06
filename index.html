@@ -13,8 +13,7 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
-
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
@@ -197,7 +196,8 @@
     <h2>Linear Regression</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>mod &lt;- lm(tc2009 ~ low, data = crime)
+    <pre><code>crime &lt;- read.csv(crime.csv)
+mod &lt;- lm(tc2009 ~ low, data = crime)
 mod
 </code></pre>
 

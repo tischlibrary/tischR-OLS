@@ -120,6 +120,7 @@ widget      : mathjax
 ## Linear Regression 
 
 ```
+crime <- read.csv(crime.csv)
 mod <- lm(tc2009 ~ low, data = crime)
 mod
 ```
